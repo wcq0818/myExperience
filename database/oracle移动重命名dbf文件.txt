@@ -1,0 +1,62 @@
+1.停用表空间
+
+alter tablespace TBS_NAME offline;
+1
+alter tablespace TBS_NAME offline;
+2.将dbf文件拷贝到目标地址
+
+
+cp tbs_name.dbf /data/oradata/tablename/2017/01/
+1
+cp tbs_name.dbf /data/oradata/tablename/2017/01/
+3.修改表空间dbf的路径
+
+
+alter tablespace TBS_NAME rename datafile '/data/db/tablename/tbs_name.dbf' to '/data/oradata/tablename/2017/01/tbs_name.dbf';
+1
+alter tablespace TBS_NAME rename datafile '/data/db/tablename/tbs_name.dbf' to '/data/oradata/tablename/2017/01/tbs_name.dbf';
+4.开启表空间
+
+
+alter tablespace TBS_NAME online;
+1
+alter tablespace TBS_NAME online;
+5.校验更换后的表空间路径
+
+
+select name，status from v$datafile where name like '%TBS_NAME%';
+1
+select name，status from v$datafile where name like '%TBS_NAME%';
+6.检查表数据是否正常
+
+
+select * from TABLE_NAME where int_day<=20141201
+1
+select * from TABLE_NAME where int_day<=20141201
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+移动重命名文件
+
+例如，我需要将/u01/app/oracle/oradata/GSP/temp4.dbf这个文件重命名为/u01/app/oracle/oradata/GSP/temp04.dbf
+
+1: 将临时表空间的临时文件脱机
+
+SQL> ALTER DATABASE TEMPFILE 
+  2   '/u01/app/oracle/oradata/GSP/temp4.dbf' OFFLINE;
+2：移动或重命名相关的临时文件
+
+ 
+
+mv /u01/app/oracle/oradata/GSP/temp4.dbf /u01/app/oracle/oradata/GSP/temp04.dbf'
+3: 使用脚本ALTER DATABASE RENAME FILE
+
+SQL> ALTER DATABASE RENAME FILE 
+  2  '/u01/app/oracle/oradata/GSP/temp4.dbf' TO
+  3  '/u01/app/oracle/oradata/GSP/temp04.dbf';
+4: 将临时表空间的临时文件联机
+
+SQL> ALTER DATABASE TEMPFILE '/u01/app/oracle/oradata/GSP/temp04.dbf' ONLINE;
+ 
+Database altered.
