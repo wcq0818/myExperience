@@ -1,0 +1,41 @@
+oracle删除用户 提示“无法删除当前已连接用户”
+
+在删除oracle用户时，报错提示“无法删除当前已连接用户”。
+
+解决方法如下：
+
+1.查看用户的连接状况
+
+select username,sid,serial# from v$session
+
+（若想具体查询某个用户，则在语句后接上 where username = ‘XXX’，如select username,sid,serial# from v$session where username = ‘NETBNEW ’）
+
+如下结果：
+
+username         sid        serial#
+
+NETBNEW         513         22974
+
+NETBNEW         514         18183
+
+NETBNEW         531         9
+
+2.找到要删除用户的sid,和serial，并删除
+
+如：你要删除用户'NETBNEW',可以这样做：
+
+alter system kill session'513,22974'；
+
+alter system kill session'514,18183'；
+
+alter system kill session'531,9'；
+
+3.删除用户
+
+drop user NETBNEW cascade
+
+这样就ok了。
+
+
+
+SELECT 'alter system kill session '''||sid||','||serial#||''';' FROM v$session WHERE username='XSS';
