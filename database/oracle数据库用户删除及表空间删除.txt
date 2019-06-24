@@ -1,4 +1,5 @@
 以system用户登录，查找需要删除的用户：
+
 --查找用户
 select ?*　from dba_users;
 --查找工作空间的路径
