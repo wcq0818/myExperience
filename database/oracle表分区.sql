@@ -10,3 +10,5 @@ alter table RD_ELEC_CODE add partition RD_ELEC_CODE99981212 VALUES LESS THAN (MA
 
 -- delete partition
 alter table RD_ELEC_CODE drop partition RD_ELEC_CODE99981212;
+
+Select * From user_jobs;
