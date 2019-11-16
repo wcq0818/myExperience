@@ -1,0 +1,7 @@
+exp heswn_nt2/heswn_nt2@192.168.135.198:1521/SMSC file='c:/user.dmp' owner=heswn_nt2
+
+exp heswn_nt2/heswn_nt2@192.168.135.198:1521/SMSC file='c:/user.dmp' tables=(OMS_STATUS_TASK)
+
+imp heswn_nt2/heswn_nt2@192.168.135.198:1521/SMSC file='c:/user.dmp' full=y
+
+imp heswn_nt2/heswn_nt2@192.168.135.198:1521/SMSC file='c:/user.dmp' tables=(OMS_STATUS_TASK)
