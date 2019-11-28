@@ -5,3 +5,10 @@ exp heswn_nt2/heswn_nt2@192.168.135.198:1521/SMSC file='c:/user.dmp' tables=(OMS
 imp heswn_nt2/heswn_nt2@192.168.135.198:1521/SMSC file='c:/user.dmp' full=y
 
 imp heswn_nt2/heswn_nt2@192.168.135.198:1521/SMSC file='c:/user.dmp' tables=(OMS_STATUS_TASK)
+
+
+select 'alter table '||table_name||' allocate extent;' from user_tables where num_rows=0;
+
+select * from user_tables where num_rows = 0 and partitioned = 'YES';
+
+alter system set deferred_segment_creation=false;

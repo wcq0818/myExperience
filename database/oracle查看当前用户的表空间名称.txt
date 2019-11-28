@@ -1,0 +1,28 @@
+1）查询当前用户表空间
+
+ /* 查看用户所属的表空间 */
+ select default_tablespace from dba_users where username='TMS21';
+ 
+ 
+2）查询所有表空间
+
+  /*查看所有的表空间 */
+   -- 1 ）方式1：dba_tablespaces --
+   select * from dba_tablespaces;
+    --2 ）方式2：v$tablespace --
+   select * from v$tablespace;   
+   
+   
+3）查询用户下所有表
+
+  /* 查看用户下面的所有的表 */ 
+  -- 1 ）方式1：user_tables --
+   select * from user_tables;
+   --2 ）方式2: dba_tables --
+   select * from dba_tables where owner='TMS21';
+   
+   
+4）查询表空间下的用户
+
+  /*查看表空间下有多少用户，tablespace_name表空间 的名字一定要大写 */
+   select distinct s.owner from dba_segments s where s.tablespace_name ='TMS21';  
