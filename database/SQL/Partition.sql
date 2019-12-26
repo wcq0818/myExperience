@@ -18,6 +18,7 @@ alter table t_test_maxvalue split partition t_test_2013_less at(to_date('2012-01
 alter table t_test_maxvalue split partition t_test_2015_less at(to_date('2014-01-01 00:00:00', 'yyyy-mm-ddhh24:mi:ss')) into (partition t_test_2014_less, partition t_test_2015_less);
 alter table t_test_maxvalue split partition t_test_2016_less at(to_date('2015-01-01 00:00:00', 'yyyy-mm-ddhh24:mi:ss')) into (partition t_test_2015_less, partition t_test_2016_less);
 alter table t_test_maxvalue split partition t_test_max at(to_date('2016-01-01 00:00:00', 'yyyy-mm-ddhh24:mi:ss')) into (partition t_test_2016_less, partition t_test_max);
+alter table t_test_max split partition t_test_max at(to_date('2017-01-01 00:00:00', 'yyyy-mm-ddhh24:mi:ss')) into (partition t_test_2017_less, partition t_test_max);
 
 alter table t_test_maxvalue drop partition T_TEST_2014_TO_2015;
 
@@ -45,3 +46,26 @@ create table t_new
 insert into t_new select pk_id, add_date_time from t_test;
 rename t_test to t_test_old;
 rename t_new to t_test;
+
+drop table OMS_STATUS_TASK;
+rename OMS_STATUS_TASK_OLD to OMS_STATUS_TASK;
+alter index OMS_STATUS_TASK_OLD_PK rename to OMS_STATUS_TASK_PK;
+alter table OMS_STATUS_TASK rename constraint OMS_STATUS_TASK_OLD_PK to OMS_STATUS_TASK_PK;
+
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1575158400) into (partition OMS_STATUS_TASK201911, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1577836800) into (partition OMS_STATUS_TASK201912, partition OMS_STATUS_TASK99981212);
+
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1580515200) into (partition OMS_STATUS_TASK202001, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1583020800) into (partition OMS_STATUS_TASK202002, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1585699200) into (partition OMS_STATUS_TASK202003, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1588291200) into (partition OMS_STATUS_TASK202004, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1590969600) into (partition OMS_STATUS_TASK202005, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1593561600) into (partition OMS_STATUS_TASK202006, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1596240000) into (partition OMS_STATUS_TASK202007, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1598918400) into (partition OMS_STATUS_TASK202008, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1601510400) into (partition OMS_STATUS_TASK202009, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1604188800) into (partition OMS_STATUS_TASK202010, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1606780800) into (partition OMS_STATUS_TASK202011, partition OMS_STATUS_TASK99981212);
+alter table OMS_STATUS_TASK split partition OMS_STATUS_TASK99981212 at (1609459200) into (partition OMS_STATUS_TASK202012, partition OMS_STATUS_TASK99981212);
+
+select count(*) from OMS_STATUS_TASK partition(OMS_STATUS_TASK201911);
