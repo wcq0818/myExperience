@@ -1,9 +1,11 @@
---创建一个临时表，用于提供序列号
+*--创建一个临时表，用于提供序列号
 CREATE GLOBAL TEMPORARY table t_sequence_num
 (
   sequenceNum number(8) not null
 )
 ON COMMIT PRESERVE ROWS;
+-- ON COMMIT DELETE ROWS 表名行只是在事务期间可见
+-- ON COMMIT PRESERVE ROWS 表名行在整个会话期间可见
 
 --开始插入数据，先生成1万个序号
 begin
