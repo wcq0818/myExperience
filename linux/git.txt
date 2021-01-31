@@ -1,0 +1,16 @@
+git config --global user.name "wcq0818"
+git config --global user.email 277073855@qq.com
+git init
+
+git clone https://github.com/wcq-org/amr-cross.git
+
+git remote add origin https://github.com/wcq-org/amr-cross.git
+
+git add README.md
+git commit -m "添加了README文件"
+git push -u origin master
+
+git add main.cpp
+git commit -m "给main.cpp添加注释"
+git push -u origin maste
+

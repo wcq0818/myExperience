@@ -1,0 +1,12 @@
+# install
+wget http://nchc.dl.sourceforge.net/sourceforge/p7zip/p7zip_4.65_src_all.tar.bz2
+tar -xjvf p7zip_4.65_src_all.tar.bz2
+cd p7zip_4.65
+make && make install
+
+// using
+7za e linux.x64_11gR2_database_1of2.7z
+7za e linux.x64_11gR2_database_2of2.7z
+
+unzip linux.x64_11gR2_database_1of2.zip
+unzip linux.x64_11gR2_database_2of2.zip

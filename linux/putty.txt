@@ -1,0 +1,9 @@
+// copy file from window to linux, using the CMD window
+pscp -P 22 d:\hello.txt root@10.10.11.128:/home/wcq
+pscp -r -P 22 d:\hello.txt root@10.10.11.128:/home/wcq
+
+// 解压压缩文件**.tar.gz 
+#tar -zxvf **.tar.gz
+
+// 解压压缩文件**.tar.bz2
+#tar -jxvf **.tar.bz2
