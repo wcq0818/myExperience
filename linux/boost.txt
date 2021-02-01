@@ -1,0 +1,12 @@
+// install
+yum install gcc
+yum install gcc-c++
+
+cd boost_1_68_0
+sudo su
+./bootstrap.sh
+./b2 install
+
+// 头文件在/usr/local/boost
+// 库文件在/usr/local/lib
+sudo ldconfig
