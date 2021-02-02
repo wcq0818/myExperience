@@ -2,16 +2,24 @@
 yum install gcc
 yum install gcc-c++
 
+// method yum
+yum install boost
+yum install boost-devel
+yum install boost-doc
+
 cd boost_1_68_0
 sudo su
 ./bootstrap.sh
 ./b2 install
+./b2 --prefix=/usr/local/boost install // 最好指定暗转路径
 
 // 头文件在/usr/local/boost
 // 库文件在/usr/local/lib
 sudo ldconfig
 
 // Python install
+yum install python-devel
+
 wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
 tar -Jxvf Python-3.7.0.tar.xz
 cd Python-3.7.0
