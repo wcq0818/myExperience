@@ -1,0 +1,15 @@
+#gcc找到头文件的路径 （windows下搜索路径）
+C_INCLUDE_PATH=/usr/include/libxml2:/MyLib
+export C_INCLUDE_PATH
+
+#g++找到头文件的路径（windows下搜索路径）
+CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/include/libxml2:/MyLib
+export CPLUS_INCLUDE_PATH
+
+#找到动态链接库的路径
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/MyLib
+export LD_LIBRARY_PATH
+
+#找到静态库的路径
+LIBRARY_PATH=$LIBRARY_PATH:/MyLib
+export LIBRARY_PATH
