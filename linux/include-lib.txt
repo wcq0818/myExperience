@@ -13,3 +13,14 @@ export LD_LIBRARY_PATH
 #找到静态库的路径
 LIBRARY_PATH=$LIBRARY_PATH:/MyLib
 export LIBRARY_PATH
+
+
+第一种
+export LD_LIBRARY_PATH="./:$LD_LIBRARY_PATH"
+这种方式将动态库路径配置到LD_LIBRARY_PATH,只是暂时生效
+
+第二种
+使用 ldconfig 机制（需 root 权限）：
+● 首先，在 /etc/ld.so.conf.d/ 下创建一个 .conf 文件，
+如 libmymethod.conf ，内容为共享库所在目录的绝对路径
+● 然后，运行 ldconfig
