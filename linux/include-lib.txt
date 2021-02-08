@@ -24,3 +24,13 @@ export LD_LIBRARY_PATH="./:$LD_LIBRARY_PATH"
 ● 首先，在 /etc/ld.so.conf.d/ 下创建一个 .conf 文件，
 如 libmymethod.conf ，内容为共享库所在目录的绝对路径
 ● 然后，运行 ldconfig
+
+
+# 查看gcc预处理C时的的搜索目录：
+echo | gcc -x c -v -E -
+
+#查看gcc预处理C++时的的搜索目录：
+echo | gcc -x c++ -v -E -
+
+#查看clang预处理C++时的搜索目录：
+echo | clang -x c++ -v -E -
